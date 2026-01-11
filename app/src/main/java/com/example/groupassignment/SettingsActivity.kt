@@ -14,17 +14,17 @@ import kotlinx.coroutines.launch
 class SettingsActivity : AppCompatActivity() {
 
     private val vm: SettingsViewModel by viewModels()
-//    private lateinit var backupRepository: BackupRepository
+    private lateinit var backupRepository: BackupRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-//        backupRepository = BackupRepository(this)
+        backupRepository = BackupRepository(this)
 
         // --- FIX: Using the IDs from YOUR XML ---
         val sw = findViewById<SwitchCompat>(R.id.switchDarkMode)
-//        val btnBackup = findViewById<Button>(R.id.btnBackup)
+        val btnBackup = findViewById<Button>(R.id.btnBackup)
 
         // Dark Mode Logic
         lifecycleScope.launch {
@@ -39,7 +39,17 @@ class SettingsActivity : AppCompatActivity() {
             vm.setDarkMode(isChecked)
             ThemeController.applyDarkMode(isChecked)
         }
+// Export Logic
+        btnBackup?.setOnClickListener {
+            btnBackup.isEnabled = false
+            Toast.makeText(this, "Exporting...", Toast.LENGTH_SHORT).show()
+            vm.backupData(backupRepository)
+        }
 
+        vm.exportStatus.observe(this) { message ->
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+            btnBackup?.isEnabled = true
+        }
 
     }
 }

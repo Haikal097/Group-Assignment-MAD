@@ -32,5 +32,30 @@ class SettingsViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
+    // --- EXPORT LOGIC (Role C) ---
+    private val _exportStatus = MutableLiveData<String>()
+    val exportStatus: LiveData<String> = _exportStatus
+
+    fun backupData(repository: BackupRepository) {
+        viewModelScope.launch(Dispatchers.IO) {
+
+            // Mock Data for Testing
+            val dummyTasks = listOf(
+                Task(id="1", title = "Backup Test 1", subtitle = "Tomorrow", isCompleted = false),
+                Task(id="2", title = "Backup Test 2", subtitle = "Urgent", isCompleted = true)
+            )
+
+            // Fixes "Unresolved reference 'exportTasksToDownloads'"
+            val result = repository.exportTasksToDownloads(dummyTasks)
+
+            withContext(Dispatchers.Main) {
+                if (result.isSuccess) {
+                    _exportStatus.value = result.getOrNull()
+                } else {
+                    _exportStatus.value = "Error: ${result.exceptionOrNull()?.message}"
+                }
+            }
+        }
+    }
 
 }

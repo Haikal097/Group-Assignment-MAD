@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootSettings"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvSettingsTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Divider under title -->
+    <View
+        android:id="@+id/divSettingsTitle"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="#D0D0D0"
+        app:layout_constraintTop_toBottomOf="@id/tvSettingsTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Appearance -->
+    <TextView
+        android:id="@+id/tvAppearance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Appearance"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/divSettingsTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvDarkMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dark Mode"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/tvAppearance"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchDarkMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvAppearance"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Data Management -->
+    <TextView
+        android:id="@+id/tvDataManagement"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Data Management"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/tvDarkMode"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/btnBackup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Backup to Device (Export)"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/tvDataManagement"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

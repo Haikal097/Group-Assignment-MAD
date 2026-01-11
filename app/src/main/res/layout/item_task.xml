@@ -1,52 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="1dp"
-    app:strokeWidth="1dp"
-    app:strokeColor="#D6D6D6">
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:gravity="center_vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <CheckBox
+        android:id="@+id/cbTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:padding="12dp">
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingStart="12dp">
 
-        <CheckBox
-            android:id="@+id/cbDone"
+        <TextView
+            android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <TextView
-            android:id="@+id/tvTaskTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Buy Groceries"
+            android:text="Task Title"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@id/cbDone"
-            app:layout_constraintTop_toTopOf="@id/cbDone"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:textColor="@android:color/black" />
 
         <TextView
-            android:id="@+id/tvTaskSubtitle"
-            android:layout_width="0dp"
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Due: Tomorrow"
-            android:textSize="12sp"
-            android:layout_marginTop="4dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@id/cbDone"
-            app:layout_constraintTop_toBottomOf="@id/tvTaskTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</com.google.android.material.card.MaterialCardView>
+            android:text="Subtitle / Due Date"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray" />
+    </LinearLayout>
+</LinearLayout>
